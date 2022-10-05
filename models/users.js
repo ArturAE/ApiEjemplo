@@ -9,7 +9,7 @@ const secret = require('../config/env.js');
 
 const User = sequelize.define('User', {
     username: {
-        type: DataTypes.CHAR(64),
+        type: DataTypes.TEXT,
         /* nombre de usuario no nulo */
         allowNull: false,
         unique: true,
@@ -19,15 +19,15 @@ const User = sequelize.define('User', {
         }
     },
     name: {
-        type: DataTypes.CHAR(64),
+        type: DataTypes.STRING(64),
         allowNull: false
     },
     surname: {
-        type: DataTypes.CHAR(128),
+        type: DataTypes.STRING(128),
         allowNull: false
     },
     email: {
-        type: DataTypes.CHAR(64),
+        type: DataTypes.STRING(64),
         allowNull: false,
         unique: true,
         validate: {
@@ -35,21 +35,21 @@ const User = sequelize.define('User', {
         }
     },
     password_hash: {
-        type: DataTypes.CHAR(64),
+        type: DataTypes.TEXT,
         allowNull: true,
     },
     password_salt: {
-        type: DataTypes.CHAR(64),
+        type: DataTypes.TEXT,
         allowNull: true,
     },
     tarjeta: {
-        type: DataTypes.CHAR(64),
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
             isCreditCard: true
         }
     },
-    tipo_tarjeta: { type: DataTypes.CHAR(64) }
+    tipo_tarjeta: { type: DataTypes.TEXT }
 });
 
 User.createPassword = function (plainText) {
